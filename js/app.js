@@ -164,7 +164,7 @@ const displayReportedPosts = () => {
     //Clear previous Post and Add only reported post by user
     const reportedPreviousPost = document.getElementById( "reported" );
     reportedPreviousPost.innerHTML = "";
-    
+
     //Fixed and display only unique reported post
     reportedPosts.forEach((post) => {
         const div = createPost(post);
@@ -173,7 +173,7 @@ const displayReportedPosts = () => {
 };
 
 const loadPosts = async () =>{
-  let data = await fetch('../data/posts.json');
+  let data = await fetch('data/posts.json');
   posts = await data.json();
   showPosts(posts);
 }
