@@ -1,5 +1,5 @@
 //Debug and Fixed the problem this this website
-let posts=[ ];
+let posts=[];
 const likedPostsId = [];
 const reportedPostsId = [];
 
@@ -149,6 +149,9 @@ const showPosts = (posts) => {
 
 const displayLikedPosts = () => {
     const likedPosts = getLikedPosts();
+    //Clear previous Post and Add only Liked post by user
+    const likedPreviousPost = document.getElementById( "liked" );
+    likedPreviousPost.innerHTML = "";
       //Fixed and display only unique liked post
     likedPosts.forEach((post) => {
         const div = createPost(post);
@@ -158,6 +161,10 @@ const displayLikedPosts = () => {
 
 const displayReportedPosts = () => {
     const reportedPosts = getReportedPosts();
+    //Clear previous Post and Add only reported post by user
+    const reportedPreviousPost = document.getElementById( "reported" );
+    reportedPreviousPost.innerHTML = "";
+    
     //Fixed and display only unique reported post
     reportedPosts.forEach((post) => {
         const div = createPost(post);
