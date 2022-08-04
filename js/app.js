@@ -1,5 +1,5 @@
+//Debug and Fixed the problem this this website
 let posts=[ ];
-
 const likedPostsId = [];
 const reportedPostsId = [];
 
@@ -16,7 +16,8 @@ const isLiked = (id) => {
 };
 
 const addToLiked = (id) => {
-    likedPostsId.push(id);  //Fixed
+  //Fixed and push the like number,and display the liked post on liked button
+    likedPostsId.push(id);  
     showPosts(posts);
 };
 
@@ -27,7 +28,8 @@ const reportPost = (id) => {
 };
 
 const displayContent = (text) => {
-    return text.length < 30 ? 'text' : text.slice(0, 30) + "<span class='fw-bold'>... read more</span>";
+  //Bug fixed where the text length is less then 30, then full text displayed on text content
+    return text.length < 30 ? text : text.slice(0, 30) + "<span class='fw-bold'>... read more</span>";
 };
 
 const switchTab = (id) => {
@@ -51,7 +53,8 @@ const switchTab = (id) => {
 };
 
 const createPost = (post) => {
-    const userImage = post.userImage; //fixed
+  //Fixed and display every user image on their profile picture
+    const userImage = post.userImage; 
     const image = post.image;
     const div = document.createElement( "article" );
     div.classList.add( "post" );
@@ -121,9 +124,10 @@ const createPost = (post) => {
                   <div class="post__description">
                     <small>
                       <a class="post__name--underline" href="#">
-                          ${post.comments?.user}
+                      <!-- Fixed user comment: user image and text  -->
+                          ${post.comments[0].user}
                       </a>
-                      ${post.comments?.text}
+                      ${post.comments[0].text}
                     </small>
                   </div>
                   <span class="post__date-time">30 minutes ago</span>
@@ -145,6 +149,7 @@ const showPosts = (posts) => {
 
 const displayLikedPosts = () => {
     const likedPosts = getLikedPosts();
+      //Fixed and display only unique liked post
     likedPosts.forEach((post) => {
         const div = createPost(post);
         document.getElementById( "liked" ).appendChild(div);
@@ -153,7 +158,8 @@ const displayLikedPosts = () => {
 
 const displayReportedPosts = () => {
     const reportedPosts = getReportedPosts();
-    posts.forEach((post) => {
+    //Fixed and display only unique reported post
+    reportedPosts.forEach((post) => {
         const div = createPost(post);
         document.getElementById( "reported" ).appendChild(div);
     });
